@@ -1,7 +1,8 @@
 return {
+{
   "nvim-treesitter/nvim-treesitter",
-  version = false, -- last release is way too old and doesn't work on Windows
   lazy = false,
+  version = false, -- last release is way too old and doesn't work on Windows
   build = ":TSUpdate",
   init = function(plugin)
     -- PERF: add nvim-treesitter queries to the rtp and it's custom query predicates early
@@ -53,6 +54,7 @@ return {
       "bash",
       "c",
       "diff",
+      "go",
       "html",
       "javascript",
       "jsdoc",
@@ -108,4 +110,5 @@ return {
     end
     require("nvim-treesitter.configs").setup(opts)
   end,
+}
 }
