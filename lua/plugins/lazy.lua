@@ -52,7 +52,10 @@ plugins = {
     {"hrsh7th/nvim-cmp"},
     {"L3MON4D3/LuaSnip"},
     -- Copilot
-    {"github/copilot.vim"}
+    {"github/copilot.vim"},
+    -- Git blame
+    {"f-person/git-blame.nvim", event = "VeryLazy"},
+    { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opt = {}},
 }
 
 
