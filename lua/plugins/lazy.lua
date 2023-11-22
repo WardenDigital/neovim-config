@@ -55,7 +55,11 @@ plugins = {
     {"github/copilot.vim"},
     -- Git blame
     {"f-person/git-blame.nvim", event = "VeryLazy"},
+    -- Tags advanced tool
     { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opt = {}},
+    -- Folding/Unfolding code
+    {'kevinhwang91/nvim-ufo', dependencies = {'kevinhwang91/promise-async'}},
+
 }
 
 
