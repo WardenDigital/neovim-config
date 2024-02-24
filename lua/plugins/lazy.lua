@@ -37,6 +37,7 @@ plugins = {
     },
     -- Code highlight
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+    { "jwalton512/vim-blade" },
     -- Git client
     { "tpope/vim-fugitive" },
     -- Harpoon
