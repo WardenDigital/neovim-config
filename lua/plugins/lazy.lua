@@ -14,27 +14,17 @@ vim.opt.rtp:prepend(lazypath)
 plugins = {
     -- Fussy search 
     {
-        "ibhagwan/fzf-lua",
-        -- optional for icon support
-        dependencies = { "nvim-tree/nvim-web-devicons" },
-        config = function()
-            -- calling `setup` is optional for customization
-            require("fzf-lua").setup({})
-        end
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
+        dependencies = {
+            { 'nvim-lua/popup.nvim' },
+            { 'nvim-lua/plenary.nvim' },
+            { 'nvim-telescope/telescope-media-files.nvim' },
+            { 'nvim-telescope/telescope-ui-select.nvim' },
+            { 'nvim-tree/nvim-web-devicons' },
+        },
     },
     -- Themes
     { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-    -- Tree side bar
-    {
-        "nvim-neo-tree/neo-tree.nvim",
-        branch = "v3.x",
-        lazy = false,
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-            "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-        }
-    },
     -- Code highlight
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
     { "jwalton512/vim-blade" },
@@ -56,10 +46,12 @@ plugins = {
     {"github/copilot.vim"},
     -- Git blame
     {"f-person/git-blame.nvim", event = "VeryLazy"},
-    -- Tags advanced tool
-    { "kylechui/nvim-surround", version = "*", event = "VeryLazy", opt = {}},
     -- Folding/Unfolding code
     {'kevinhwang91/nvim-ufo', dependencies = {'kevinhwang91/promise-async'}},
+    -- MINI Nvim - set of small plugins
+	{ 'echasnovski/mini.nvim', version = '*' },
+    -- Vim Be Good - A Vim Learning Game
+    { "ThePrimeagen/vim-be-good" },
 
 }
 

@@ -13,6 +13,7 @@ vim.opt.expandtab = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
+vim.opt.termguicolors = true
 
 -- Scroll Padding
 vim.opt.scrolloff = 8
