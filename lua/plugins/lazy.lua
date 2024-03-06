@@ -11,7 +11,13 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-plugins = {
+local plugins = {
+	{
+		"VonHeikemen/fine-cmdline.nvim",
+		dependencies = {
+			{ "MunifTanjim/nui.nvim" },
+		},
+	},
 	-- Fussy search
 	{
 		"nvim-telescope/telescope.nvim",
