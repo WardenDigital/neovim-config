@@ -12,10 +12,18 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	-- Fancy CMD line
 	{
 		"VonHeikemen/fine-cmdline.nvim",
 		dependencies = {
 			{ "MunifTanjim/nui.nvim" },
+		},
+	},
+	-- Fancy file explorer
+	{
+		"tamago324/lir.nvim",
+		dependencies = {
+			{ "kyazdani42/nvim-web-devicons" },
 		},
 	},
 	-- Fussy search
