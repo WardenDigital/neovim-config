@@ -18,3 +18,7 @@ vim.keymap.set("i", "jk", "<Esc>")
 vim.keymap.set("i", "kj", "<Esc>")
 vim.keymap.set("i", "jj", "<Esc>")
 vim.keymap.set("i", "kk", "<Esc>")
+
+-- Windows change to TMUX style -_
+vim.keymap.set("n", "<C-w>-", "<C-w>s")
+vim.keymap.set("n", "<C-w>_", "<C-w>v")
