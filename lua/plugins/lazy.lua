@@ -49,8 +49,14 @@ local plugins = {
 	},
 	-- Themes
 	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{ "marko-cerovac/material.nvim" },
 	-- Code highlight
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	-- Status Line
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+	},
 	{ "jwalton512/vim-blade" },
 	-- Git client
 	{ "tpope/vim-fugitive" },
