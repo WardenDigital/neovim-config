@@ -1,5 +1,0 @@
-local finecmd = require("fine-cmdline")
-finecmd.setup()
-vim.keymap.set("n", ":", function()
-	finecmd.open({ default_value = "" })
-end)
