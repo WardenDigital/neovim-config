@@ -61,7 +61,13 @@ local plugins = {
 	-- Git client
 	{ "tpope/vim-fugitive" },
 	-- Harpoon
-	{ "ThePrimeagen/harpoon" },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	-- Undo Tree
 	{ "mbbill/undotree" },
 	-- LSP
