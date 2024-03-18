@@ -31,9 +31,6 @@ local plugins = {
 	-- Fancy file explorer
 	{
 		"tamago324/lir.nvim",
-		dependencies = {
-			{ "kyazdani42/nvim-web-devicons" },
-		},
 	},
 	-- Fussy search
 	{
@@ -55,11 +52,21 @@ local plugins = {
 	-- Status Line
 	{
 		"nvim-lualine/lualine.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
 	{ "jwalton512/vim-blade" },
-	-- Git client
-	{ "tpope/vim-fugitive" },
+	{
+		"kdheepak/lazygit.nvim",
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	},
 	-- Harpoon
 	{
 		"ThePrimeagen/harpoon",
