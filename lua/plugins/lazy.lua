@@ -49,6 +49,8 @@ local plugins = {
 	{ "marko-cerovac/material.nvim" },
 	-- Code highlight
 	{ "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+	-- Color for CSS
+	{ "NvChad/nvim-colorizer.lua" },
 	-- Status Line
 	{
 		"nvim-lualine/lualine.nvim",
