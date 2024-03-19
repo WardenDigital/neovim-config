@@ -76,9 +76,6 @@ capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp"
 local servers = {
 	-- clangd = {},
 	-- gopls = {},
-	phpactor = {
-		filetypes = { "php" },
-	},
 	-- pyright = {},
 	-- rust_analyzer = {},
 	-- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
@@ -132,7 +129,6 @@ local ensure_installed = vim.tbl_keys(servers or {})
 vim.list_extend(ensure_installed, {
 	"stylua", -- Used to format lua code
 	"phpcs", -- Used to format PHP code
-	"phpactor", -- Used for PHP LSP
 })
 require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
