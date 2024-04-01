@@ -55,6 +55,11 @@ local plugins = {
 	{
 		"nvim-lualine/lualine.nvim",
 	},
+	-- Database
+	{ "tpope/vim-dadbod" },
+	{ "kristijanhusak/vim-dadbod-ui" },
+	{ "kristijanhusak/vim-dadbod-completion" },
+
 	{ "jwalton512/vim-blade" },
 	{
 		"kdheepak/lazygit.nvim",
