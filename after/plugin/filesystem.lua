@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>pv", function()
 end)
 
 filesystem.setup({
-	show_hidden_files = false,
+	show_hidden_files = true,
 	ignore = {}, -- { ".DS_Store", "node_modules" } etc.
 	devicons = {
 		enable = true,
@@ -43,8 +43,8 @@ filesystem.setup({
 	float = {
 		winblend = 0,
 		curdir_window = {
-			enable = true,
-			highlight_dirname = false,
+			enable = false,
+			highlight_dirname = true,
 		},
 
 		-- -- You can define a function that returns a table to be passed as the third
