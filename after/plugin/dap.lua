@@ -1,16 +1,22 @@
 local dap, dapui = require("dap"), require("dapui")
 dapui.setup()
 
-vim.api.nvim_set_keymap("n", "<leader>dt", ":lua require('dapui').toggle()<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dd", ":lua require('dap').toggle_breakpoint()<CR>", { noremap = true })
-vim.api.nvim_set_keymap(
-	"n",
-	"<leader>ddif",
-	":lua require('dap').set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>",
-	{ noremap = true }
-)
-vim.api.nvim_set_keymap("n", "<leader>dc", ":DapContinue<CR>", { noremap = true })
-vim.api.nvim_set_keymap("n", "<leader>dr", ":lua require('dapui').open({reset = true})<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>dt", function()
+	dapui.toggle()
+end, { noremap = true })
+
+vim.keymap.set("n", "<leader>dd", function()
+	dap.toggle_breakpoint()
+end, { noremap = true })
+vim.keymap.set("n", "<leader>ddif", function()
+	dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
+end, { noremap = true })
+vim.keymap.set("n", "<leader>dc", function()
+	dap.continue()
+end, { noremap = true })
+vim.keymap.set("n", "<leader>dr", function()
+	dapui.open({ reset = true })
+end, { noremap = true })
 
 dap.adapters.php = {
 	type = "executable",
