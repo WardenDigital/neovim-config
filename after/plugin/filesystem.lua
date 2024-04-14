@@ -1,93 +1,56 @@
-local actions = require("lir.actions")
-local mark_actions = require("lir.mark.actions")
-local clipboard_actions = require("lir.clipboard.actions")
-local filesystem = require("lir")
-local lirFloat = require("lir.float")
-
-vim.keymap.set("n", "<leader>pv", function()
-	lirFloat.toggle()
-end)
-
-filesystem.setup({
-	show_hidden_files = true,
-	ignore = {}, -- { ".DS_Store", "node_modules" } etc.
-	devicons = {
-		enable = true,
-		highlight_dirname = false,
-	},
-	mappings = {
-		["<CR>"] = actions.edit,
-		["<C-s>"] = actions.split,
-		["<C-v>"] = actions.vsplit,
-		["<C-t>"] = actions.tabedit,
-
-		["<BS>"] = actions.up,
-		["q"] = actions.quit,
-
-		["d"] = actions.mkdir,
-		["a"] = actions.newfile,
-		["r"] = actions.rename,
-		["@"] = actions.cd,
-		["Y"] = actions.yank_path,
-		["."] = actions.toggle_show_hidden,
-		["D"] = actions.delete,
-
-		["J"] = function()
-			mark_actions.toggle_mark()
-			vim.cmd("normal! j")
-		end,
-		["C"] = clipboard_actions.copy,
-		["X"] = clipboard_actions.cut,
-		["P"] = clipboard_actions.paste,
-	},
-	float = {
-		winblend = 0,
-		curdir_window = {
-			enable = false,
-			highlight_dirname = true,
+local filesystem_config = -- No need to copy this inside `setup()`. Will be used automatically.
+	{
+		-- Customization of shown content
+		content = {
+			-- Predicate for which file system entries to show
+			filter = nil,
+			-- What prefix to show to the left of file system entry
+			prefix = nil,
+			-- In which order to show file system entries
+			sort = nil,
 		},
 
-		-- -- You can define a function that returns a table to be passed as the third
-		-- -- argument of nvim_open_win().
-		-- win_opts = function()
-		--   local width = math.floor(vim.o.columns * 0.8)
-		--   local height = math.floor(vim.o.lines * 0.8)
-		--   return {
-		--     border = {
-		--       "+", "─", "+", "│", "+", "─", "+", "│",
-		--     },
-		--     width = width,
-		--     height = height,
-		--     row = 1,
-		--     col = math.floor((vim.o.columns - width) / 2),
-		--   }
-		-- end,
-	},
-	hide_cursor = true,
-})
+		-- Module mappings created only inside explorer.
+		-- Use `''` (empty string) to not create one.
+		mappings = {
+			close = "q",
+			go_in = "l",
+			go_in_plus = "L",
+			go_out = "h",
+			go_out_plus = "H",
+			reset = "<BS>",
+			reveal_cwd = "@",
+			show_help = "g?",
+			synchronize = "<CR>",
+			trim_left = "<",
+			trim_right = ">",
+		},
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "lir" },
-	callback = function()
-		-- use visual mode
-		vim.api.nvim_buf_set_keymap(
-			0,
-			"x",
-			"J",
-			':<C-u>lua require"lir.mark.actions".toggle_mark("v")<CR>',
-			{ noremap = true, silent = true }
-		)
+		-- General options
+		options = {
+			-- Whether to delete permanently or move into module-specific trash
+			permanent_delete = true,
+			-- Whether to use for editing directories
+			use_as_default_explorer = true,
+		},
 
-		-- echo cwd
-		vim.api.nvim_echo({ { vim.fn.expand("%:p"), "Normal" } }, false, {})
-	end,
-})
+		-- Customization of explorer windows
+		windows = {
+			-- Maximum number of windows to show side by side
+			max_number = math.huge,
+			-- Whether to show preview of file/directory under cursor
+			preview = false,
+			-- Width of focused window
+			width_focus = 50,
+			-- Width of non-focused window
+			width_nofocus = 15,
+			-- Width of preview window
+			width_preview = 25,
+		},
+	}
 
--- custom folder icon
-require("nvim-web-devicons").set_icon({
-	lir_folder_icon = {
-		icon = "",
-		color = "#7ebae4",
-		name = "LirFolderNode",
-	},
-})
+require("mini.files").setup(filesystem_config)
+-- Files
+vim.keymap.set("n", "<leader>pv", function()
+	require("mini.files").open()
+end)
