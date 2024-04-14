@@ -45,4 +45,14 @@ dap.configurations.php = {
 		name = "Listen for xdebug",
 		port = 9003,
 	},
+
+	{
+		name = "run current script",
+		type = "php",
+		request = "launch",
+		port = 9003,
+		cwd = "${fileDirname}",
+		program = "${file}",
+		runtimeExecutable = "php",
+	},
 }
