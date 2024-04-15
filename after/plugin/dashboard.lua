@@ -64,6 +64,7 @@ starter_logo, random_quote = align_logo_and_quote(starter_logo, random_quote)
 starter.setup({
 	header = starter_logo .. "\n" .. random_quote .. "\n",
 	items = {
+		starter.sections.recent_files(),
 		starter.sections.telescope(),
 	},
 	footer = "Happy coding with NeoVim!",
