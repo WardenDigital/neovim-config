@@ -12,13 +12,3 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
-
--- Esc to normal mode remap
-vim.keymap.set("i", "jk", "<Esc>")
-vim.keymap.set("i", "kj", "<Esc>")
-vim.keymap.set("i", "jj", "<Esc>")
-vim.keymap.set("i", "kk", "<Esc>")
-
--- Windows change to TMUX style -_
-vim.keymap.set("n", "<C-w>-", "<C-w>s")
-vim.keymap.set("n", "<C-w>_", "<C-w>v")
