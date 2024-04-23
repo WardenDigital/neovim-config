@@ -25,7 +25,7 @@ vim.keymap.set("n", "<leader>a", function()
 	local fileName = vim.fn.expand("%")
 	local fileIndex = getFileItemIndex(fileName)
 	if nil ~= fileIndex then
-		return print("It's at " .. getHotKey(fileIndex))
+		return print("It's at (" .. getHotKey(fileIndex) .. ")")
 	end
 	harpoon:list():add()
 	local items = harpoon:list()["items"]
