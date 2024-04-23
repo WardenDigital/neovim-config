@@ -6,7 +6,7 @@ vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
-vim.opt.expandtab = true
+vim.opt.expandtab = false
 
 -- Search & Hightlight
 
@@ -26,3 +26,10 @@ vim.opt.updatetime = 50
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
+
+-- Hide concealed text (mostly for Neorg)
+vim.opt.conceallevel = 2
+vim.opt.concealcursor = "ncv"
+
+-- Disable autofolding on buffer Open
+vim.opt.foldlevelstart = 99

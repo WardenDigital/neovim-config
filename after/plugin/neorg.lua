@@ -16,8 +16,8 @@ local config = {
 					work = "~/Notes/work",
 				},
 				index = "index.norg", -- The name of the main (root) .norg file
+				default_workspace = "notes",
 			},
-			default_workspace = "notes",
 		},
 	},
 }
