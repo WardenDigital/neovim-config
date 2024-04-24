@@ -1,10 +1,10 @@
 local harpoon = require("harpoon")
 
-local tabMapping = { "q", "w", "e", "r" }
+local buffMapping = { "q", "w", "e", "r" }
 
 local function getHotKey(index)
-	if #tabMapping >= index then
-		return tabMapping[index]
+	if #buffMapping >= index then
+		return buffMapping[index]
 	end
 	return ">.<"
 end
@@ -19,27 +19,35 @@ local function getFileItemIndex(filename)
 	return nil
 end
 
+local function selectBuff(index)
+	local list = harpoon:list()["items"]
+	if not list[index] then
+		vim.notify("No item at (" .. getHotKey(index) .. ")", 3)
+	end
+	harpoon:list():select(index)
+end
+
 harpoon.setup()
 
 vim.keymap.set("n", "<leader>a", function()
 	local fileName = vim.fn.expand("%")
 	local fileIndex = getFileItemIndex(fileName)
 	if nil ~= fileIndex then
-		return print("It's at (" .. getHotKey(fileIndex) .. ")")
+		return vim.notify("It's at (" .. getHotKey(fileIndex) .. ")")
 	end
 	harpoon:list():add()
 	local items = harpoon:list()["items"]
 	local index = #items
-	print("(" .. getHotKey(index) .. ")" .. " ---}> " .. fileName)
+	vim.notify("(" .. getHotKey(index) .. ")" .. " ---}> " .. fileName)
 end)
 
 vim.keymap.set("n", "<leader>h", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list())
 end)
 
-for i, v in pairs(tabMapping) do
+for i, v in pairs(buffMapping) do
 	local map = "<leader>" .. v
 	vim.keymap.set("n", map, function()
-		harpoon:list():select(i)
+		selectBuff(i)
 	end)
 end
