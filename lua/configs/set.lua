@@ -30,6 +30,8 @@ vim.g.maplocalleader = ","
 -- Hide concealed text (mostly for Neorg)
 vim.opt.conceallevel = 2
 vim.opt.concealcursor = "ncv"
-
 -- Disable autofolding on buffer Open
 vim.opt.foldlevelstart = 99
+
+vim.opt.virtualedit = "block"
+vim.opt.ignorecase = true
