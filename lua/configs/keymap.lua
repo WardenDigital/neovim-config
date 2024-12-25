@@ -12,3 +12,10 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+
+-- Source current file
+vim.keymap.set("n", "<space><space>x", ":source %<CR>")
+-- Execute current line
+vim.keymap.set("n", "<space>x", ":.lua<CR>")
+-- Execute selected lines
+vim.keymap.set("v", "<space>x", ":lua<CR>")
