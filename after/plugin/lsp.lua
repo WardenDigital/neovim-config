@@ -1,3 +1,7 @@
+-- UI for LSP
+local lspsaga = require("lspsaga")
+lspsaga.setup({})
+
 vim.api.nvim_create_autocmd("LspAttach", {
     group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
     callback = function(event)
@@ -40,7 +44,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
         -- Opens a popup that displays documentation about the word under your cursor
         --  See `:help K` for why this keymap
-        map("K", vim.lsp.buf.hover, "Hover Documentation")
+        map("K", ":Lspsaga hover_doc<CR>", "Hover Documentation")
 
         -- WARN: This is not Goto Definition, this is Goto Declaration.
         --  For example, in C this would take you to the header
