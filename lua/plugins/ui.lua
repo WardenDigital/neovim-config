@@ -9,7 +9,16 @@ return {
             transparent_background = true,
             float = {
                 transparent = true,
-            }
+            },
+            custom_highlights = function(colors)
+                return {
+                    DapBreakpoint = { fg = colors.red },
+                    DapStopped = { fg = colors.green },
+                }
+            end
+
+
+
         }
     },
     -- Fancy CMD line
