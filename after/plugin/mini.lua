@@ -57,5 +57,5 @@ local fs_config = -- No need to copy this inside `setup()`. Will be used automat
 local fs = require("mini.files")
 fs.setup(fs_config)
 
-vim.keymap.set("n", "<leader>pv", function() fs.open(nil, true) end, { desc = "[M]ini [F]iles" })
-vim.keymap.set("n", "-", function() fs.open(vim.api.nvim_buf_get_name(0)) end, { desc = "Mini Files in current dir" })
+vim.keymap.set("n", "<leader>ex", function() fs.open(vim.api.nvim_buf_get_name(0)) end,
+    { desc = "Mini Files in current dir" })
