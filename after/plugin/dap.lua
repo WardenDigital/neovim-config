@@ -47,6 +47,7 @@ local dap_install = {
     "delve", -- Go
     "php",   -- PHP
     "bash",  -- Bash
+    "lua"
 }
 
 require("mason-nvim-dap").setup({
@@ -60,25 +61,36 @@ require("mason-nvim-dap").setup({
     automatic_setup = true,
 })
 
--- Styles
-vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#993939", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61afef", bg = "#31353f" })
-vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379", bg = "#31353f" })
+dap.adapters.go = function(callback, _)
+    callback({
+        type = "server",
+        host = "127.0.0.1",
+        port = 2345,
+    })
+end
 
-vim.fn.sign_define(
-    "DapBreakpoint",
-    { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-)
-vim.fn.sign_define(
-    "DapBreakpointCondition",
-    { text = "󰺴", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-)
-vim.fn.sign_define(
-    "DapBreakpointRejected",
-    { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-)
-vim.fn.sign_define(
-    "DapLogPoint",
-    { text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
-)
-vim.fn.sign_define("DapStopped", { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" })
+dap.configurations.go = {
+    {
+        type = "go",
+        name = "Attach to Go (Docker)",
+        request = "attach",
+        mode = "remote",
+        substitutePath = {
+            {
+                from = vim.fn.getcwd(),
+                to = "/app",
+            },
+        },
+    },
+}
+
+-- Styles
+local signs = {
+    DapBreakpoint = { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "" },
+    DapStopped = { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "" },
+    DapBreakpointCondition = { text = "", texthl = "DapBreakpointCondition", linehl = "DapBreakpointCondition", numhl = "" },
+}
+
+for name, sign in pairs(signs) do
+    vim.fn.sign_define(name, sign)
+end
