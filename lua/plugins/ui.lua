@@ -63,7 +63,14 @@ return {
     {
         'nvimdev/lspsaga.nvim',
         event = "VeryLazy",
-        opts = {},
+        opts = {
+            outline = {
+                keys = {
+                    jump = "<CR>",
+                },
+            }
+
+        },
         dependencies = {
             'nvim-treesitter/nvim-treesitter', -- optional
             'nvim-tree/nvim-web-devicons',     -- optional

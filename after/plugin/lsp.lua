@@ -52,6 +52,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
         -- Expand virtual text
         map("<leader>e", vim.diagnostic.open_float, "[E]xpand virtual text")
 
+        -- Get and outline
+        map("<leader>o", ":Lspsaga outline<CR>", "[O]utline")
+
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
         --    See `:help CursorHold` for information about when this is executed

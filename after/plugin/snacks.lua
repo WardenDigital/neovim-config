@@ -23,8 +23,7 @@ vim.keymap.set("n", "<leader>gs", lazygit.open)
 
 -- Explorer
 local ex = require("snacks.explorer")
-vim.keymap.set("n", "<leader>pv", ex.open)
-vim.keymap.set("n", "-", ex.reveal)
+vim.keymap.set("n", "-", ex.open)
 
 -- Notifier
 local notifier = require("snacks.notifier")
