@@ -16,7 +16,8 @@ return {
             ts = { "prettier" },
             typescript = { "prettier" },
             svelte = { "prettier" },
-            json = { "fixjson" }
+            json = { "fixjson" },
+            go = { "goimports" },
         },
     }
 }
