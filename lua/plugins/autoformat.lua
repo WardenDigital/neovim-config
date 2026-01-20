@@ -18,6 +18,7 @@ return {
             svelte = { "prettier" },
             json = { "fixjson" },
             go = { "goimports" },
+            nix = { "alejandra" },
         },
     }
 }
