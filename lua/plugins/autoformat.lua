@@ -31,7 +31,8 @@ return {
             typescript = { "prettier" },
             svelte = { "prettier" },
             json = { "fixjson" },
-            go = { "gofmt" },
+            go = { "goimports" },
+            nix = { "alejandra" },
         },
     }
 }
