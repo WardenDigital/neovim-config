@@ -1,7 +1,21 @@
 return {
     "stevearc/conform.nvim",
     event = "VeryLazy",
+      keys = {
+    {
+      -- Customize or remove this keymap to your liking
+      "<leader>f",
+      function()
+        require("conform").format({ async = true, lsp_format = "fallback" })
+      end,
+      mode = "",
+      desc = "Format buffer",
+                    },
+  },
     opts = {
+        default_format_opts = {
+            lsp_format = "fallback"
+        },
         format_on_save = {
             lsp_fallback = true,
             async = false,
@@ -9,7 +23,7 @@ return {
         },
         notify_on_error = true,
         formatters_by_ft = {
-            php = { "phpcbf" },
+            php = { "phpcbf", "php-cs-fixer"},
             vue = { "prettier" },
             html = { "prettier" },
             js = { "prettier" },

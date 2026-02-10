@@ -5,6 +5,7 @@ return {
         name = "catppuccin",
         priority = 1000,
         opts = {
+            integrations = { blink_cmp = true },
             flavour = "mocha", -- latte, frappe, macchiato, mocha
             transparent_background = true,
             float = {

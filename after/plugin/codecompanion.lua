@@ -30,6 +30,7 @@ local config = {
     },
     display = {
         chat = {
+            show_settings = true,
             window = {
                 position = "right", -- "left", "right", "top", "bottom"
             },

@@ -78,6 +78,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 local servers = {
     qmlls = {
         cmd = { "qmlls6" },
+        root_markers = { "shell.qml", ".qmlls.ini" },
     },
     vue_ls = {},
     lua_ls = {

@@ -36,7 +36,7 @@ local fs_config = -- No need to copy this inside `setup()`. Will be used automat
         -- Whether to delete permanently or move into module-specific trash
         permanent_delete = true,
         -- Whether to use for editing directories
-        use_as_default_explorer = false,
+        use_as_default_explorer = true,
     },
 
     -- Customization of explorer windows
@@ -57,5 +57,5 @@ local fs_config = -- No need to copy this inside `setup()`. Will be used automat
 local fs = require("mini.files")
 fs.setup(fs_config)
 
-vim.keymap.set("n", "<leader>ex", function() fs.open(vim.api.nvim_buf_get_name(0)) end,
+vim.keymap.set("n", "-", function() fs.open(vim.api.nvim_buf_get_name(0)) end,
     { desc = "Mini Files in current dir" })
