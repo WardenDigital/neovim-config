@@ -9,6 +9,10 @@ return {
         end,
         config = function()
             require("dbee").setup( --[[optional config]])
+
+            vim.keymap.set("n", "<leader>db", function()
+                require("dbee").toggle()
+            end, { desc = "Toggle Dbee" })
         end,
     },
 }
