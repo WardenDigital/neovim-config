@@ -1,18 +1,18 @@
 return {
-    {
-        "kndndrj/nvim-dbee",
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-        },
-        build = function()
-            require("dbee").install()
-        end,
-        config = function()
-            require("dbee").setup( --[[optional config]])
-
-            vim.keymap.set("n", "<leader>db", function()
-                require("dbee").toggle()
-            end, { desc = "Toggle Dbee" })
-        end,
-    },
+  'kristijanhusak/vim-dadbod-ui',
+  dependencies = {
+    { 'tpope/vim-dadbod', lazy = true },
+    { 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+  },
+  cmd = {
+    'DBUI',
+    'DBUIToggle',
+    'DBUIAddConnection',
+    'DBUIFindBuffer',
+  },
+  init = function()
+    -- Your DBUI configuration
+    vim.g.db_ui_use_nerd_fonts = 1
+    vim.api.nvim_set_keymap('n', '<leader>db', ':DBUIToggle<CR>', { noremap = true, silent = true })
+  end,
 }

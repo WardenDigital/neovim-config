@@ -1,61 +1,84 @@
 require("mini.ai").setup({ n_lines = 501 })
-require('mini.comment').setup()
+require("mini.comment").setup()
 require("mini.surround").setup()
 require("mini.pairs").setup()
 
 local fs_config = -- No need to copy this inside `setup()`. Will be used automatically.
-{
-    -- Customization of shown content
-    content = {
-        -- Predicate for which file system entries to show
-        filter = nil,
-        -- What prefix to show to the left of file system entry
-        prefix = nil,
-        -- In which order to show file system entries
-        sort = nil,
-    },
+	{
+		-- Customization of shown content
+		content = {
+			-- Predicate for which file system entries to show
+			filter = nil,
+			-- What prefix to show to the left of file system entry
+			prefix = nil,
+			-- In which order to show file system entries
+			sort = nil,
+		},
 
-    -- Module mappings created only inside explorer.
-    -- Use `''` (empty string) to not create one.
-    mappings = {
-        close = "q",
-        go_in = "l",
-        go_in_plus = "L",
-        go_out = "h",
-        go_out_plus = "H",
-        reset = "<BS>",
-        reveal_cwd = "@",
-        show_help = "g?",
-        synchronize = "<CR>",
-        trim_left = "<",
-        trim_right = ">",
-    },
+		-- Module mappings created only inside explorer.
+		-- Use `''` (empty string) to not create one.
+		mappings = {
+			close = "q",
+			go_in = "l",
+			go_in_plus = "L",
+			go_out = "h",
+			go_out_plus = "H",
+			reset = "<BS>",
+			reveal_cwd = "@",
+			show_help = "g?",
+			synchronize = "<CR>",
+			trim_left = "<",
+			trim_right = ">",
+		},
 
-    -- General options
-    options = {
-        -- Whether to delete permanently or move into module-specific trash
-        permanent_delete = true,
-        -- Whether to use for editing directories
-        use_as_default_explorer = true,
-    },
+		-- General options
+		options = {
+			-- Whether to delete permanently or move into module-specific trash
+			permanent_delete = true,
+			-- Whether to use for editing directories
+			use_as_default_explorer = true,
+		},
 
-    -- Customization of explorer windows
-    windows = {
-        -- Maximum number of windows to show side by side
-        max_number = math.huge,
-        -- Whether to show preview of file/directory under cursor
-        preview = false,
-        -- Width of focused window
-        width_focus = 50,
-        -- Width of non-focused window
-        width_nofocus = 15,
-        -- Width of preview window
-        width_preview = 25,
-    },
-}
+		-- Customization of explorer windows
+		windows = {
+			-- Maximum number of windows to show side by side
+			max_number = math.huge,
+			-- Whether to show preview of file/directory under cursor
+			preview = false,
+			-- Width of focused window
+			width_focus = 50,
+			-- Width of non-focused window
+			width_nofocus = 15,
+			-- Width of preview window
+			width_preview = 25,
+		},
+	}
 
 local fs = require("mini.files")
 fs.setup(fs_config)
 
-vim.keymap.set("n", "-", function() fs.open(vim.api.nvim_buf_get_name(0)) end,
-    { desc = "Mini Files in current dir" })
+vim.keymap.set("n", "-", function()
+	fs.open(vim.api.nvim_buf_get_name(0))
+end, { desc = "Mini Files in current dir" })
+
+local map = require("mini.map")
+map.setup({
+	integrations = {
+		map.gen_integration.builtin_search(),
+		map.gen_integration.diff(),
+		map.gen_integration.diagnostic(),
+	},
+	symbols = {
+		encode = map.gen_encode_symbols.dot("3x2"),
+	},
+	window = {
+		width = 20,
+		winblend = 0,
+	},
+})
+
+map.open()
+
+vim.keymap.set("n", "<leader>m", function()
+	map.toggle()
+end, { desc = "Toggle Mini Map" })
