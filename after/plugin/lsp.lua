@@ -97,7 +97,7 @@ local ts_ls_config = {
 }
 local servers = {
 	qmlls = {
-		cmd = { "qmlls6" },
+		cmd = { "qmlls" },
 		root_markers = { "shell.qml", ".qmlls.ini" },
 	},
 	vue_ls = {},
@@ -130,3 +130,5 @@ local servers = {
 for k, t in pairs(servers) do
 	vim.lsp.config(k, t)
 end
+
+vim.lsp.enable("qmlls")
