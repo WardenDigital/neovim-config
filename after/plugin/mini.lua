@@ -77,8 +77,6 @@ map.setup({
 	},
 })
 
-map.open()
-
 vim.keymap.set("n", "<leader>m", function()
 	map.toggle()
 end, { desc = "Toggle Mini Map" })
