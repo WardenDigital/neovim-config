@@ -101,6 +101,11 @@ local servers = {
 		root_markers = { "shell.qml", ".qmlls.ini" },
 	},
 	vue_ls = {},
+	svelte = {
+		cmd = { "svelteserver", "--stdio" },
+		filetypes = { "svelte" },
+		root_markers = { "package.json" },
+	},
 	ts_ls = ts_ls_config,
 	lua_ls = {
 		settings = {
