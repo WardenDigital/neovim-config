@@ -1,11 +1,28 @@
 local companion = require("codecompanion")
 
 local config = {
+	adapters = {
+		http = {
+			ollama = function()
+				return require("codecompanion.adapters").extend("ollama", {
+					env = {
+						url = "http://llm.home:11434",
+					},
+					headers = {
+						["Content-Type"] = "application/json",
+					},
+					parameters = {
+						sync = true,
+					},
+				})
+			end,
+		},
+	},
 	strategies = {
 		chat = {
 			adapter = {
-				name = "copilot",
-				model = "gpt-5-mini",
+				name = "ollama",
+				model = "qwen3.5:9b",
 			},
 			roles = {
 				llm = function(adapter)
